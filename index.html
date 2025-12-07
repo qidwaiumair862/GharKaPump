@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ghar Ka Pump - Petrol Diesel Ghar Baithe</title>
     
-    <!-- Google Font (mast bold wala) -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     
-    <!-- Bootstrap 5 CDN -->
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     
-    <!-- Hamara apna fadu CSS -->
+    <!-- Animate.css for pulse button -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Hamara CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,7 +22,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-3" href="#">⛽ Ghar Ka Pump</a>
+            <a class="navbar-brand fw-bold fs-3" href="#">Ghar Ka Pump</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,12 +36,25 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero text-white text-center">
-        <div class="container pt-5">
-            <h1 class="display-3 fw-bold mb-4">Ghar Baithe Petrol-Diesel</h1>
-            <p class="lead mb-4">Sirsa, Hisar, Fatehabad aur aas-paas – ab pump aayega aapke ghar!</p>
-            <a href="#order" class="btn btn-danger btn-lg px-5 py-3 shadow">Abhi Order Karein ⛽</a>
+    <!-- Hero Section with Fire + Counter -->
+    <section class="hero position-relative text-white text-center overflow-hidden">
+        <div id="fire-bg"></div>
+        <div class="container pt-5 position-relative" style="z-index: 2;">
+            <h1 class="display-3 fw-bold mb-4" style="text-shadow: 0 0 30px #ff0000;">
+                Ghar Baithe Petrol-Diesel
+            </h1>
+            <p class="lead mb-4">Sirsa • Hisar • Fatehabad aur aas-paas – ab pump aayega aapke ghar!</p>
+            <a href="#order" class="btn btn-danger btn-lg px-5 py-3 shadow-lg animate__animated animate__pulse animate__infinite">
+                Abhi Order Karein
+            </a>
+            
+            <!-- Running Counter -->
+            <div class="counter-section mt-5">
+                <h3 class="text-warning mb-3">Aaj tak deliver kiye</h3>
+                <h1 class="display-4 fw-bold text-white">
+                    <span id="litreCounter">1247</span> Litre+
+                </h1>
+            </div>
         </div>
     </section>
 
@@ -50,82 +66,74 @@
                 <div class="col-md-4 mb-4">
                     <div class="step-box bg-white p-4 rounded shadow">
                         <h1 class="text-danger">1</h1>
-                        <h5>Form Bharo</h5>
-                        <p>Name, address, kitna litre chahiye</p>
+                        <h5>Form Bharo</h5><p>Name, address, kitna litre</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="step-box bg-white p-4 rounded shadow">
                         <h1 class="text-danger">2</h1>
-                        <h5>Payment Karo</h5>
-                        <p>Cash ya UPI – delivery boy ko</p>
+                        <h5>Payment Karo</h5><p>Cash/UPI – delivery boy ko</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="step-box bg-white p-4 rounded shadow">
                         <h1 class="text-danger">3</h1>
-                        <h5>Tank Full!</h5>
-                        <p>2-4 ghante mein fuel pahunch jayega</p>
+                        <h5>Tank Full!</h5><p>2-4 ghante mein pahunch jayega</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Prices Section -->
+    <!-- Prices -->
     <section id="prices" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5 text-white fw-bold">Aaj Ke Bhav</h2>
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="price-card text-white p-4 rounded shadow">
-                        <h3>🚗 Petrol</h3>
+                        <h3>Petrol</h3>
                         <h1 class="display-4">₹94.5 <small>/Ltr</small></h1>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="price-card text-white p-4 rounded shadow">
-                        <h3>🛵 Diesel</h3>
+                        <h3>Diesel</h3>
                         <h1 class="display-4">₹87.5 <small>/Ltr</small></h1>
                     </div>
                 </div>
             </div>
-            <p class="text-center text-white">*Delivery charge ₹50 (10km tak free above 50L)</p>
+            <p class="text-center text-white">*Delivery charge ₹50 (50L se upar free)</p>
         </div>
     </section>
 
     <!-- Order Form -->
     <section id="order" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold text-danger">Order Now</h2>
+            <h2 class="text-center mb-5 fw-bold text-danger">Abhi Order Karein</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <form id="orderForm" class="bg-white p-5 rounded shadow">
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control form-control-lg" id="name" placeholder="Aapka Naam" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control form-control-lg" id="phone" placeholder="Phone Number" required>
-                            </div>
+                            <div class="col-md-6 mb-3"><input type="text" class="form-control form-control-lg" id="name" placeholder="Aapka Naam" required></div>
+                            <div class="col-md-6 mb-3"><input type="text" class="form-control form-control-lg" id="phone" placeholder="Phone Number" required></div>
                         </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control form-control-lg" id="address" placeholder="Pura Address (Village/City)" required>
-                        </div>
+                        <div class="mb-3"><input type="text" class="form-control form-control-lg" id="address" placeholder="Pura Address" required></div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <select class="form-select form-select-lg" id="fuel" required>
-                                    <option value="">Fuel Type Chune</option>
+                                    <option value="">Fuel Type</option>
                                     <option value="Petrol">Petrol</option>
                                     <option value="Diesel">Diesel</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-<input type="number" class="form-control form-control-lg" id="litre" placeholder="Kitne Litre?" min="5" required>                            </div>
+                                <input type="number" class="form-control form-control-lg" id="litre" placeholder="Kitne Litre?" min="5" required>
+                            </div>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-success btn-lg px-5 py-3">
-                                WhatsApp Pe Order Bhejo 🚀
+                                WhatsApp Pe Order Bhejo
                             </button>
                         </div>
                     </form>
@@ -134,13 +142,64 @@
         </div>
     </section>
 
+    <!-- Customer Reviews Slider -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold text-danger">Hamare Customers Bole</h2>
+            <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner text-center">
+                    <div class="carousel-item active">
+                        <h5>★★★★★</h5>
+                        <p class="lead">"30 minute mein diesel aa gaya, zabardast service!"</p>
+                        <strong>- Rajesh, Sirsa</strong>
+                    </div>
+                    <div class="carousel-item">
+                        <h5>★★★★★</h5>
+                        <p class="lead">"Ab pump ki line nahi lagti, ghar baithe ho jata hai"</p>
+                        <strong>- Sunita, Hisar</strong>
+                    </div>
+                    <div class="carousel-item">
+                        <h5>★★★★★</h5>
+                        <p class="lead">"Rate sahi aur delivery fast – 10/10"</p>
+                        <strong>- Aman, Fatehabad</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
-        <p>© 2025 Ghar Ka Pump • Sirsa-Hisar-Fatehabad • Call: <a href="tel:+919999999999" class="text-white">+91 9956808690</a></p>
+        <p>© 2025 Ghar Ka Pump • Sirsa-Hisar-Fatehabad • Call: <a href="tel:+919956808698" class="text-white">+91 99568 08698</a></p>
     </footer>
 
-    <!-- Bootstrap + JS -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- Fire + Counter Animation Script -->
+    <script>
+        // Fire background
+        const fireBg = document.getElementById('fire-bg');
+        fireBg.style.position = 'absolute';
+        fireBg.style.inset = '0';
+        fireBg.style.background = 'radial-gradient(circle at center, #ff3300 0%, #000 70%)';
+        fireBg.style.opacity = '0.6';
+        fireBg.style.pointerEvents = 'none';
+
+        // Running counter
+        const counter = document.getElementById('litreCounter');
+        let count = 1200;
+        const target = 1523;
+        const increment = 7;
+        const interval = setInterval(() => {
+            count += increment;
+            counter.textContent = count;
+            if (count >= target) {
+                counter.textContent = target + '+';
+                clearInterval(interval);
+            }
+        }, 30);
+    </script>
 </body>
 </html>
