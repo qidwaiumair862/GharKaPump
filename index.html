@@ -20,17 +20,24 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand fw-bold fs-3" href="#">Ghar Ka Pump</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
                     <li class="nav-item"><a class="nav-link" href="#prices">Prices</a></li>
                     <li class="nav-item"><a class="nav-link" href="#order">Order Here</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="openAdminBtn">Admin</a></li>
+                    <li class="nav-item ms-3">
+                        <div class="form-check form-switch mt-2">
+                            <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                            <label class="form-check-label small" for="darkModeToggle">Dark Mode</label>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -93,17 +100,17 @@
                 <div class="col-md-6 mb-4">
                     <div class="price-card text-white p-4 rounded shadow">
                         <h3>Petrol</h3>
-                        <h1 class="display-4">₹94.5 <small>/Ltr</small></h1>
+                        <h1 class="display-4"><span id="petrolPrice">94.5</span> <small>/Ltr</small></h1>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="price-card text-white p-4 rounded shadow">
                         <h3>Diesel</h3>
-                        <h1 class="display-4">₹87.5 <small>/Ltr</small></h1>
+                        <h1 class="display-4"><span id="dieselPrice">87.5</span> <small>/Ltr</small></h1>
                     </div>
                 </div>
             </div>
-            <p class="text-center text-white">*Delivery charge ₹50</p>
+            <p class="text-center text-white">*Delivery charge ₹<span id="deliveryChargeText">50</span></p>
         </div>
     </section>
 
@@ -116,7 +123,7 @@
                     <form id="orderForm" class="bg-white p-5 rounded shadow">
                         <div class="row">
                             <div class="col-md-6 mb-3"><input type="text" class="form-control form-control-lg" id="name" placeholder="Aapka Naam" required></div>
-                            <div class="col-md-6 mb-3"><input type="text" class="form-control form-control-lg" id="phone" placeholder="Phone Number" required></div>
+                            <div class="col-md-6 mb-3"><input type="tel" class="form-control form-control-lg" id="phone" placeholder="Phone Number" required></div>
                         </div>
                         <div class="mb-3"><input type="text" class="form-control form-control-lg" id="address" placeholder="Pura Address" required></div>
                         <div class="row">
@@ -131,9 +138,31 @@
                                 <input type="number" class="form-control form-control-lg" id="litre" placeholder="Kitne Litre?" min="5" required>
                             </div>
                         </div>
-                        <div class="text-center">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <select class="form-select form-select-lg" id="timeslot" required>
+                                    <option value="">Delivery Time Slot</option>
+                                    <option value="9:00 - 12:00">9:00 - 12:00</option>
+                                    <option value="12:00 - 15:00">12:00 - 15:00</option>
+                                    <option value="15:00 - 18:00">15:00 - 18:00</option>
+                                    <option value="18:00 - 21:00">18:00 - 21:00</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text">₹</span>
+                                    <input type="text" class="form-control form-control-lg" id="estimatedBill" placeholder="Total Bill" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" id="calcBtn">Calculate Bill</button>
+                                </div>
+                                <small class="text-muted">Calculator shows fuel cost + delivery.</small>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
                             <button type="submit" class="btn btn-success btn-lg px-5 py-3">
-                                Order On Wattsapp
+                                Confirm & Send on WhatsApp
                             </button>
                         </div>
                     </form>
@@ -172,6 +201,73 @@
     <footer class="bg-dark text-white text-center py-4">
         <p>© 2025 Ghar Ka Pump • Sirsa-Hisar-Fatehabad • Call: <a href="tel:+919956808698" class="text-white">+91 99568 08698</a></p>
     </footer>
+
+    <!-- Bill Modal -->
+    <div class="modal fade" id="billModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Order Bill</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="billContent"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="confirmSendBtn" class="btn btn-success">Confirm & Send WhatsApp</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Modal (frontend-only, uses localStorage) -->
+    <div class="modal fade" id="adminModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Admin Dashboard (Local)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3 d-flex justify-content-between">
+                <div>
+                    <strong>Total Orders:</strong> <span id="adminTotalOrders">0</span>
+                    &nbsp; | &nbsp;
+                    <strong>Total Litres:</strong> <span id="adminTotalLitres">0</span>
+                    &nbsp; | &nbsp;
+                    <strong>Total Sales:</strong> ₹<span id="adminTotalSales">0</span>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-danger" id="clearOrdersBtn">Clear All Orders</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Naam</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Fuel</th>
+                            <th>Litres</th>
+                            <th>Time Slot</th>
+                            <th>Total (₹)</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <small class="text-muted">Note: This admin is front-end only and stores orders in your browser localStorage.</small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
