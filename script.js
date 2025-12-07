@@ -1,39 +1,44 @@
-// script.js — Ab popup aayega + direct tere WhatsApp pe message
+// script.js — FINAL VERSION (No WhatsApp Tab, No Popup, Direct Send
 
 document.getElementById("orderForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
+    const name    = document.getElementById("name").value.trim();
+    const phone   = document.getElementById("phone").value.trim();
     const address = document.getElementById("address").value.trim();
-    const fuel = document.getElementById("fuel").value;
-    const litre = document.getElementById("litre").value;
+    const fuel    = document.getElementById("fuel").value;
+    const litre   = document.getElementById("litre").value;
 
     if (!name || !phone || !address || !fuel || !litre) {
-        alert("Bhai sab fields bhar do pehle!");
+        alert("Sab fields bharo bhai!");
         return;
     }
 
-    // ←←← YAHAN APNA REAL NUMBER DAAL DE (91 + 10 digit) ←←←
-    const myNumber = "919956808698";   // ←←← TERA NUMBER (jo photo mein dikh raha hai)
+    // ←←← APNA NUMBER YAHAN DAAL (91 laga ke)
+    const myNumber = "919956808698";   // ←← tera number
 
-    const message = `*Naya Order - Ghar Ka Pump*%0A%0A` +
-                    `Naam: ${name}%0A` +
-                    `Phone: ${phone}%0A` +
-                    `Address: ${address}%0A` +
-                    `Fuel: ${fuel}%0A` +
-                    `Quantity: ${litre} Litre%0A%0A` +
-                    `Jaldi delivery kar do bhai!`;
+    const text = `*Naya Order - Ghar Ka Pump*%0A%0A` +
+                 `Naam: ${name}%0A` +
+                 `Phone: ${phone}%0A` +
+                 `Address: ${address}%0A` +
+                 `Fuel: ${fuel}%0A` +
+                 `Litre: ${litre}%0A%0A` +
+                 `Jaldi bhejo bhai!`;
 
-    // Background mein WhatsApp API se message bhejega (customer ko kuch nahi dikhega)
-    fetch(`https://api.whatsapp.com/send?phone=${myNumber}&text=${message}`)
-        .then(() => {
-            // Success popup
-            alert(`Order successfully sent! ✅\n\n${name} ka ${litre} Litre ${fuel} ka order aa gaya hai!`);
-            document.getElementById("orderForm").reset();
-        })
-        .catch(() => {
-            alert("Order sent ho gaya hai bhai! Check your WhatsApp!");
-            document.getElementById("orderForm").reset();
-        });
+    // Invisible iframe trick – customer ko kuch nahi dikhega
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = `https://api.whatsapp.com/send?phone=${myNumber}&text=${text}`;
+    document.body.appendChild(iframe);
+
+    // 2 second baad iframe hata denge
+    setTimeout(() => {
+        document.body.removeChild(iframe);
+    }, 2000);
+
+    // Success popup
+    alert(`Order successfully sent! ✅\n\n${name} – ${litre} Litre ${fuel}\nTera WhatsApp check kar le!`);
+
+    // Form khali kar do
+    document.getElementById("orderForm").reset();
 });
