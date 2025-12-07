@@ -16,10 +16,10 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
         return;
     }
 
-    // Yeh tera WhatsApp number daal dena (country code ke saath)
-    const yourWhatsAppNumber = "919956808690"; // ←←←←← YAHAN APNA NUMBER DAAL DENA
+    // ←←←←← YAHAN APNA SACCHA NUMBER DAAL DE (sirf 91 + 10 digit) ←←←←←
+    const yourWhatsAppNumber = "919956808690";   // ← Isme apna number daal de, jaise 919876543210
 
-    // Order message ban raha hai (mast Hindi mein)
+    // Order message ban raha hai
     const message = `🛢️ *Naya Order - Ghar Ka Pump* 🛢️%0A%0A` +
                     `👤 Naam: ${name}%0A` +
                     `📞 Phone: ${phone}%0A` +
@@ -28,15 +28,11 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
                     `📏 Quantity: ${litre} Litre%0A%0A` +
                     `Jaldi bhejo bhai, customer wait kar raha hai! 🚀`;
 
-    // WhatsApp link
     const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
 
-    // Naya tab kholo aur WhatsApp pe le jao
     window.open(whatsappURL, "_blank");
 
-    // Success wala mast alert
     alert("Order WhatsApp pe bhej diya! 🚀\nAb customer ka call aayega!");
 
-    // Form reset kar do
     document.getElementById("orderForm").reset();
 });
