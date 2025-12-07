@@ -116,3 +116,25 @@ footer {
     .hero h1 { font-size: 3.5rem; }
     .hero { height: 80vh; }
 }
+/* Fire Hero Extra */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Counter Style */
+.counter-section {
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+/* Reviews Carousel */
+.carousel-item {
+    padding: 30px;
+    font-size: 1.3rem;
+}
