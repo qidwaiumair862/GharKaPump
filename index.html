@@ -2,8 +2,7 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8" />
-    <!-- <meta name="width=device-width, initial-scale=1.0"/> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ghar Ka Pump - Petrol Diesel Ghar Baithe</title>
     
     <!-- Fonts -->
@@ -12,16 +11,16 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     
-    <!-- Animate.css -->
+    <!-- Animate.css for pulse button -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
-    <!-- Hamara Final CSS -->
+    <!-- Hamara CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- Navbar with Dark Mode & Admin -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand fw-bold fs-3" href="#">Ghar Ka Pump</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -32,11 +31,11 @@
                     <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
                     <li class="nav-item"><a class="nav-link" href="#prices">Prices</a></li>
                     <li class="nav-item"><a class="nav-link" href="#order">Order Here</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="openAdminBtn>Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="openAdminBtn">Admin</a></li>
                     <li class="nav-item ms-3">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-switch mt-2">
                             <input class="form-check-input" type="checkbox" id="darkModeToggle">
-                            <label class="form-check-label text-white small" for="darkModeToggle">Dark Mode</label>
+                            <label class="form-check-label small" for="darkModeToggle">Dark Mode</label>
                         </div>
                     </li>
                 </ul>
@@ -44,48 +43,49 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Fire + Counter -->
     <section class="hero position-relative text-white text-center overflow-hidden">
         <div id="fire-bg"></div>
         <div class="container pt-5 position-relative" style="z-index: 2;">
-            <h1 class="display-3 fw-bold mb-4">Ghar Baithe Petrol-Diesel</h1>
-            <p class="lead mb-4">Sirsa • Hisar • Fatehabad aur aas-paas</p>
+            <h1 class="display-3 fw-bold mb-4" style="text-shadow: 0 0 30px #ff0000;">
+                Ghar Baithe Petrol-Diesel
+            </h1>
+            <p class="lead mb-4">Sirsa • Hisar • Fatehabad aur aas-paas – ab pump aayega aapke ghar!</p>
             <a href="#order" class="btn btn-danger btn-lg px-5 py-3 shadow-lg animate__animated animate__pulse animate__infinite">
                 Abhi Order Karein
             </a>
-
-            <!-- Counter -->
+            
+            <!-- Running Counter -->
             <div class="counter-section mt-5">
-                <h3 class="text-warning">Total Delivery Till Now</h3>
-                <h1 class="display-4 fw-bold"><span id="litreCounter">1247</span> Litre+</h1>
+                <h3 class="text-warning mb-3">Total Delivery</h3>
+                <h1 class="display-4 fw-bold text-white">
+                    <span id="litreCounter">1247</span> Litre+
+                </h1>
             </div>
         </div>
     </section>
 
-    <!-- How it works - 3 Steps (ab dono mode mein dikhega) -->
-    <section id="how" class="py-5">
+    <!-- Kaise Kaam Karta Hai -->
+    <section id="how" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold text-danger display-5">Receive Fuel in 3 Steps</h2>
-            <div class="row text-center g-5">
-                <div class="col-md-4">
-                    <div class="step-box mx-auto">
+            <h2 class="text-center mb-5 fw-bold text-danger">Recive Fuel In 3 Steps</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="step-box bg-white p-4 rounded shadow">
                         <h1 class="text-danger">1</h1>
-                        <h5>Fill Info</h5>
-                        <p>Name, address, litre</p>
+                        <h5>Fill info</h5><p>Name, address, litre</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="step-box mx-auto">
+                <div class="col-md-4 mb-4">
+                    <div class="step-box bg-white p-4 rounded shadow">
                         <h1 class="text-danger">2</h1>
-                        <h5>Payment Karo</h5>
-                        <p>Cash/UPI – delivery boy ko</p>
+                        <h5>Payment Karo</h5><p>Cash/UPI – delivery boy ko</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="step-box mx-auto">
+                <div class="col-md-4 mb-4">
+                    <div class="step-box bg-white p-4 rounded shadow">
                         <h1 class="text-danger">3</h1>
-                        <h5>Tank Full!</h5>
-                        <p>2-4 ghante mein pahunch jayega</p>
+                        <h5>Tank Full!</h5><p>2-4 ghante mein pahunch jayega</p>
                     </div>
                 </div>
             </div>
@@ -95,73 +95,74 @@
     <!-- Prices -->
     <section id="prices" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5 text-white fw-bold display-5">Today's Prices</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-5 mb-4">
-                    <div class="price-card text-white p-5 rounded shadow text-center">
+            <h2 class="text-center mb-5 text-white fw-bold">Today Prices</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="price-card text-white p-4 rounded shadow">
                         <h3>Petrol</h3>
-                        <h1 class="display-4">₹<span id="petrolPrice">94.5</span> <small>/Ltr</small></h1>
+                        <h1 class="display-4"><span id="petrolPrice">94.5</span> <small>/Ltr</small></h1>
                     </div>
                 </div>
-                <div class="col-md-5 mb-4">
-                    <div class="price-card text-white p-5 rounded shadow text-center">
+                <div class="col-md-6 mb-4">
+                    <div class="price-card text-white p-4 rounded shadow">
                         <h3>Diesel</h3>
-                        <h1 class="display-4">₹<span id="dieselPrice">87.5</span> <small>/Ltr</small></h1>
+                        <h1 class="display-4"><span id="dieselPrice">87.5</span> <small>/Ltr</small></h1>
                     </div>
                 </div>
             </div>
-            <p class="text-center text-white mt-3">*Delivery charge ₹<span id="deliveryChargeText">50</span> (50L+ free)</p>
+            <p class="text-center text-white">*Delivery charge ₹<span id="deliveryChargeText">50</span></p>
         </div>
     </section>
 
     <!-- Order Form -->
-    <section id="order" class="py-5">
+    <section id="order" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold text-danger display-5">Order Now</h2>
+            <h2 class="text-center mb-5 fw-bold text-danger">Order Now</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form id="orderForm" class="p-5 rounded shadow">
-                        <div class="row g-3">
-                            <div class="col-md-6"><input type="text" class="form-control form-control-lg" id="name" placeholder="Aapka Naam" required></div>
-                            <div class="col-md-6"><input type="tel" class="form-control form-control-lg" id="phone" placeholder="10 Digit Phone" maxlength="10" required></div>
+                    <form id="orderForm" class="bg-white p-5 rounded shadow">
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><input type="text" class="form-control form-control-lg" id="name" placeholder="Aapka Naam" required></div>
+                            <div class="col-md-6 mb-3"><input type="tel" class="form-control form-control-lg" id="phone" placeholder="Phone Number" required></div>
                         </div>
-                        <div class="mt-3"><input type="text" class="form-control form-control-lg" id="address" placeholder="Pura Address (Village/City)" required></div>
-                        
-                        <div class="row g-3 mt-3">
-                            <div class="col-md-6">
+                        <div class="mb-3"><input type="text" class="form-control form-control-lg" id="address" placeholder="Pura Address" required></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
                                 <select class="form-select form-select-lg" id="fuel" required>
-                                    <option value="">Fuel Type Chuno</option>
+                                    <option value="">Fuel Type</option>
                                     <option value="Petrol">Petrol</option>
                                     <option value="Diesel">Diesel</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <input type="number" class="form-control form-control-lg" id="litre" placeholder="Kitne Litre?" min="5" required>
                             </div>
                         </div>
 
-                        <div class="row g-3 mt-3">
-                            <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
                                 <select class="form-select form-select-lg" id="timeslot" required>
-                                    <option value="">Time Slot Chuno</option>
-                                    <option>9:00 - 12:00</option>
-                                    <option>12:00 - 15:00</option>
-                                    <option>15:00 - 18:00</option>
-                                    <option>18:00 - 21:00</option>
+                                    <option value="">Delivery Time Slot</option>
+                                    <option value="9:00 - 12:00">9:00 - 12:00</option>
+                                    <option value="12:00 - 15:00">12:00 - 15:00</option>
+                                    <option value="15:00 - 18:00">15:00 - 18:00</option>
+                                    <option value="18:00 - 21:00">18:00 - 21:00</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-6 mb-3">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text">₹</span>
-                                    <input type="text" class="form-control" id="estimatedBill" placeholder="Bill Calculate Kare" readonly>
-                                    <button class="btn btn-outline-success" type="button" id="calcBtn">Calculate</button>
+                                    <input type="text" class="form-control form-control-lg" id="estimatedBill" placeholder="Total Bill" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" id="calcBtn">Calculate Bill</button>
                                 </div>
+                                <small class="text-muted">Calculator shows fuel cost + delivery.</small>
                             </div>
                         </div>
 
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-success btn-lg px-5 py-3">
-                                Confirm & Send WhatsApp
+                                Confirm & Send on WhatsApp
                             </button>
                         </div>
                     </form>
@@ -170,25 +171,25 @@
         </div>
     </section>
 
-    <!-- Reviews -->
+    <!-- Customer Reviews Slider -->
     <section class="py-5 bg-dark text-white">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold text-danger">Customer Reviews</h2>
+            <h2 class="text-center mb-5 fw-bold text-danger">Customers Feedback</h2>
             <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner text-center">
                     <div class="carousel-item active">
                         <h5>★★★★★</h5>
-                        <p class="lead">"30 minute mein petrol aa gaya bhai!"</p>
+                        <p class="lead">"30 minute mein diesel aa gaya, zabardast service!"</p>
                         <strong>- Rajesh, Sirsa</strong>
                     </div>
                     <div class="carousel-item">
                         <h5>★★★★★</h5>
-                        <p class="lead">"Best service, highly recommended"</p>
+                        <p class="lead">"Ab pump ki line nahi lagti, ghar baithe ho jata hai"</p>
                         <strong>- Sunita, Hisar</strong>
                     </div>
                     <div class="carousel-item">
                         <h5>★★★★★</h5>
-                        <p class="lead">"Rate sahi, delivery fast"</p>
+                        <p class="lead">"Rate sahi aur delivery fast – 10/10"</p>
                         <strong>- Aman, Fatehabad</strong>
                     </div>
                 </div>
@@ -198,30 +199,101 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
-        <p>© 2025 Ghar Ka Pump • Call: <a href="tel:+919956808698" class="text-white">+91 99568 08698</a></p>
+        <p>© 2025 Ghar Ka Pump • Sirsa-Hisar-Fatehabad • Call: <a href="tel:+919956808698" class="text-white">+91 99568 08698</a></p>
     </footer>
 
-    <!-- Bill Modal + Admin Modal (same as before) -->
-    <!-- (tu pehle wala modal code yahin paste kar dena, main upar wala chhoda hai space ke liye) -->
+    <!-- Bill Modal -->
+    <div class="modal fade" id="billModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Order Bill</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="billContent"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="confirmSendBtn" class="btn btn-success">Confirm & Send WhatsApp</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Modal (frontend-only, uses localStorage) -->
+    <div class="modal fade" id="adminModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Admin Dashboard (Local)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3 d-flex justify-content-between">
+                <div>
+                    <strong>Total Orders:</strong> <span id="adminTotalOrders">0</span>
+                    &nbsp; | &nbsp;
+                    <strong>Total Litres:</strong> <span id="adminTotalLitres">0</span>
+                    &nbsp; | &nbsp;
+                    <strong>Total Sales:</strong> ₹<span id="adminTotalSales">0</span>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-danger" id="clearOrdersBtn">Clear All Orders</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Naam</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Fuel</th>
+                            <th>Litres</th>
+                            <th>Time Slot</th>
+                            <th>Total (₹)</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <small class="text-muted">Note: This admin is front-end only and stores orders in your browser localStorage.</small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 
-    <!-- Fire + Counter Animation -->
+    <!-- Fire + Counter Animation Script -->
     <script>
+        // Fire background
         const fireBg = document.getElementById('fire-bg');
-        fireBg.style.cssText = 'position:absolute;inset:0;background:radial-gradient(circle at center,#ff3300 0%,#000 70%);opacity:0.6;pointer-events:none;';
+        fireBg.style.position = 'absolute';
+        fireBg.style.inset = '0';
+        fireBg.style.background = 'radial-gradient(circle at center, #ff3300 0%, #000 70%)';
+        fireBg.style.opacity = '0.6';
+        fireBg.style.pointerEvents = 'none';
 
+        // Running counter
         const counter = document.getElementById('litreCounter');
         let count = 1200;
         const target = 1523;
-        const timer = setInterval(() => {
-            count += 7;
+        const increment = 7;
+        const interval = setInterval(() => {
+            count += increment;
             counter.textContent = count;
             if (count >= target) {
                 counter.textContent = target + '+';
-                clearInterval(timer);
+                clearInterval(interval);
             }
         }, 30);
     </script>
